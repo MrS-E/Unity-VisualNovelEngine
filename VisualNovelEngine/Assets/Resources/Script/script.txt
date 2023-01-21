@@ -1,0 +1,14 @@
+character(Ky, Karl, color=red, image=Karl_01)
+label start
+show bg_01 with Fade do clear
+Ky "Hi"
+question "Do you want to start new?":jump start,"Do you want to continue?":"So it is...";
+appear Karl, right
+Ky "Hello again"
+Ky "Where are you?"
+disappear Karl
+label end
+"I'm here"
+Ky "Where did I go?"
+clrscr 
+end
