@@ -10,5 +10,5 @@ disappear Karl
 label end
 "I'm here"
 Ky "Where did I go?"
-clrscr 
+clrscr
 end
