@@ -17,8 +17,7 @@ public class CharacterSideImage : MonoBehaviour
 
     void Start()
     {
-
-        size = new Vector2(size.x * (int)Math.Floor(screenHeight / size.y), size.y * (int)Math.Floor(screenHeight / size.y));
+        size = new Vector2(size.x * (screenHeight / size.y), size.y * (screenHeight / size.y));
         gObject = this.gameObject;
         thisImage = this.gameObject.GetComponent<Image>();
         Color c = thisImage.color;
