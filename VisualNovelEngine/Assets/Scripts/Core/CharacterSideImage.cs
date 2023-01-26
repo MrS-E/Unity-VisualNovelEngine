@@ -48,7 +48,7 @@ public class CharacterSideImage : MonoBehaviour
         if(screenHeight != Screen.height || screenWidth != Screen.width)
         {
             screenHeight = Screen.height; screenWidth = Screen.width;
-            size = new Vector2(size.x * (int)Math.Floor(screenHeight / size.y), size.y * (int)Math.Floor(screenHeight / size.y));
+            size = new Vector2(size.x * (screenHeight / size.y), size.y * (screenHeight / size.y));
             thisImage.rectTransform.sizeDelta = size;
             if (position == "center")
             {
