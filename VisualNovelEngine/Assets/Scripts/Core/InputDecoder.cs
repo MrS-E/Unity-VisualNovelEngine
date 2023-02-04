@@ -47,49 +47,51 @@ public class InputDecoder
         {
             Say(command);
         }
-
-        string[] SeperatingString = { " ", "\'", "\"", "(", ")", ":" };
-        string[] args = command.Split(SeperatingString, StringSplitOptions.RemoveEmptyEntries);
-
-        foreach (Character character in CharacterList)
+        else
         {
-            if (args[0] == character.shortname || args[0] == character.fullname)
+            string[] SeperatingString = { " ", "\'", "\"", "(", ")", ":" };
+            string[] args = command.Split(SeperatingString, StringSplitOptions.RemoveEmptyEntries);
+
+            foreach (Character character in CharacterList)
             {
-                Say(character.fullname, SplitToSay(command, character));
+                if (args[0] == character.shortname || args[0] == character.fullname)
+                {
+                    Say(character.fullname, SplitToSay(command, character), character.color);
+                }
             }
-        }
-        if (args[0] == "show")
-        {
-            showImage(command);
-        }
-        else if (args[0] == "clrscr")
-        {
-            clearScreen(null, true);
-        }
-        else if (args[0] == "character")
-        {
-            createNewCharacter(command);
-        }
-        else if (args[0] == "jump")
-        {
-            JumpTo(command);
-        }
-        else if (args[0] == "appear")
-        {
-            AppearCharacter(command);
-        }
-        else if (args[0] == "disappear")
-        {
-            DisappearCharacter(command);
-        }
-        else if (args[0] == "end")
-        {
-            Application.Quit();
-            UnityEditor.EditorApplication.isPlaying = false;
-        }
-        else if (args[0] == "question")
-        {
-            Question(command);
+            if (args[0] == "show")
+            {
+                showImage(command);
+            }
+            else if (args[0] == "clrscr")
+            {
+                clearScreen(null, true);
+            }
+            else if (args[0] == "character")
+            {
+                createNewCharacter(command);
+            }
+            else if (args[0] == "jump")
+            {
+                JumpTo(command);
+            }
+            else if (args[0] == "appear")
+            {
+                AppearCharacter(command);
+            }
+            else if (args[0] == "disappear")
+            {
+                DisappearCharacter(command);
+            }
+            else if (args[0] == "end")
+            {
+                Application.Quit();
+                //UnityEditor.EditorApplication.isPlaying = false;
+            }
+            else if (args[0] == "question")
+            {
+                Question(command);
+            }
         }
     }
 
@@ -111,18 +113,19 @@ public class InputDecoder
         PausedHere = true;
     }
 
-    public static void Say(string who, string what)
+    public static void Say(string who, string what, Color color)
     {
         if (!InterfaceElements.activeInHierarchy) InterfaceElements.SetActive(true);
         DialogText.GetComponent<TextMeshProUGUI>().text = what.Substring(0, what.Length );
         NameText.GetComponent<TextMeshProUGUI>().text = who;
+        NameText.GetComponent<TextMeshProUGUI>().color = color;
         PausedHere = true;
     }
 
     public static void Question(string command)
     {
         DialogText.GetComponent<TextMeshProUGUI>().text = "";
-        string[] questions = command.Replace("question ", "").Split(';')[0].Split(',');
+        string[] questions = command.Replace("question ", "").Split(';')[0].Split('~');
         List<GameObject> qs = new List<GameObject>();
         for(int x = 0; x<questions.Length; x++)
         {

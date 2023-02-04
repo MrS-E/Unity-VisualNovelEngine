@@ -22,15 +22,15 @@ public class CharacterSideImage : MonoBehaviour
         thisImage = this.gameObject.GetComponent<Image>();
         Color c = thisImage.color;
         thisImage.rectTransform.sizeDelta = size;
-        if (position == "center") 
+        if (position == "center")
         {
             thisImage.rectTransform.anchoredPosition = new Vector2(0, (screenHeight - size.y) / -2);
         }
-        else if(position == "right")
+        else if (position == "right")
         {
             thisImage.rectTransform.anchoredPosition = new Vector2((screenWidth - size.x) / 2, (screenHeight - size.y) / -2);
         }
-        else if(position == "left")
+        else if (position == "left")
         {
             thisImage.rectTransform.anchoredPosition = new Vector2((screenWidth - size.x) / -2, (screenHeight - size.y) / -2);
         }
@@ -45,7 +45,7 @@ public class CharacterSideImage : MonoBehaviour
 
     void Update()
     {
-        if(screenHeight != Screen.height || screenWidth != Screen.width)
+        if (screenHeight != Screen.height || screenWidth != Screen.width)
         {
             screenHeight = Screen.height; screenWidth = Screen.width;
             size = new Vector2(size.x * (screenHeight / size.y), size.y * (screenHeight / size.y));

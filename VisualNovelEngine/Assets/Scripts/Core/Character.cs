@@ -31,7 +31,7 @@ public class Character
     {
         this.shortname = shortname;
         this.fullname = fullname;
-        this.color = Color.white;
+        this.color = Color.blue;
         this.sideImage = null;
         check();
     }
